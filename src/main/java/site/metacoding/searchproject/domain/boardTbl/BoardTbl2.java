@@ -1,4 +1,4 @@
-package site.metacoding.searchproject.domain;
+package site.metacoding.searchproject.domain.boardTbl;
 
 import java.time.LocalDateTime;
 
