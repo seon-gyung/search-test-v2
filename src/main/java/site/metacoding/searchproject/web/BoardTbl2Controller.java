@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import site.metacoding.searchproject.domain.boardTbl.BoardTbl2;
 import site.metacoding.searchproject.domain.boardTbl.BoardTbl2Repository;
@@ -19,8 +20,9 @@ public class BoardTbl2Controller {
     }
 
     @GetMapping("/search")
-    public String search(Model model){
-        List<BoardTbl2> boards = boardTbl2Repository.findAll();
+    public String search(@RequestParam(defaultValue = " ") String keyword, Model model){ // keyword=스프링
+        List<BoardTbl2> boards = boardTbl2Repository.mSearch(keyword);
+        // System.out.println("크기 : " + boards.size());
         model.addAttribute("boards", boards);
         return "home";
     }
